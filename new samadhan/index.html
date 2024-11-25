@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speech Recognition in EJS</title>
+  <script>
+    // Speech recognition script will be added here
+  </script>
+</head>
+<body>
+  <h1>Speech Recognition Demo</h1>
+  <button id="start">Start Recognition</button>
+  <button id="stop">Stop Recognition</button>
+  <p>Recognized Text:</p>
+  <textarea id="result" rows="5" cols="50"></textarea>
+
+  <script>
+    // Check for browser compatibility
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = true; // Keeps recognition running
+      recognition.lang = 'en-US'; // Set the language
+
+      const startBtn = document.getElementById('start');
+      const stopBtn = document.getElementById('stop');
+      const resultBox = document.getElementById('result');
+
+      // Start recognition
+      startBtn.addEventListener('click', () => {
+        recognition.start();
+        console.log('Speech recognition started');
+      });
+
+      // Stop recognition
+      stopBtn.addEventListener('click', () => {
+        recognition.stop();
+        console.log('Speech recognition stopped');
+      });
+
+      // Handle recognized speech
+      recognition.onresult = (event) => {
+        let transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          transcript += event.results[i][0].transcript;
+        }
+        resultBox.value = transcript;
+      };
+
+      // Handle errors
+      recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+      };
+    } else {
+      alert('Speech Recognition is not supported in this browser.');
+    }
+  </script>
+</body>
+</html>

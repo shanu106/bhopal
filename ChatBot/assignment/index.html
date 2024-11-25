@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Event Registration Form</title>
+  <style>
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+    .success {
+      color: green;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Event Registration Form</h1>
+  <form id="registrationForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Enter your name">
+    <span id="nameError" class="error"></span><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Enter your email">
+    <span id="emailError" class="error"></span><br><br>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" placeholder="Enter 10-digit phone number">
+    <span id="phoneError" class="error"></span><br><br>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" min="18" placeholder="Enter your age">
+    <span id="ageError" class="error"></span><br><br>
+
+    <label>Gender:</label>
+    <input type="radio" name="gender" id="male" value="Male"> Male
+    <input type="radio" name="gender" id="female" value="Female"> Female
+    <span id="genderError" class="error"></span><br><br>
+
+    <label for="eventType">Event Type:</label>
+    <select id="eventType">
+      <option value="">Select an event</option>
+      <option value="Conference">Conference</option>
+      <option value="Workshop">Workshop</option>
+      <option value="Seminar">Seminar</option>
+    </select>
+    <span id="eventTypeError" class="error"></span><br><br>
+
+    <button type="button" id="submitButton">Submit</button>
+    <p id="successMessage" class="success"></p>
+  </form>
+
+  <script src="validation.js"></script>
+</body>
+</html>
